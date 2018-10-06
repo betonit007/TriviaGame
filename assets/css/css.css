@@ -1,6 +1,6 @@
 body {
     font-family: 'Orbitron', sans-serif;
-    background-image: url("https://betonit007.github.io/TriviaGame/assets/images/saab-logo.png");
+    
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12,16 +12,18 @@ body {
 
 h1 {
     font-size: 70px;
-    margin: 20px; auto;
+    padding-top: 10px;
+    margin: 0 auto;
     text-align: center;
     -webkit-text-stroke: 1px black;
    color: #D7A84F;
-   text-shadow:
-       3px 3px 0 red,
-     -1px -1px 0 red,
-      1px -1px 0 red,
-      -1px 1px 0 red,
-       1px 1px 0 red;
+   text-shadow: 
+       3px 3px 0 black,
+     -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px 1px 0 black,
+       1px 1px 0 black;
+
 }
 
 #container {
@@ -29,6 +31,11 @@ h1 {
     height: 800px;
     margin: 0 auto;
     color: #D7A84F;
+    background-image: url("https://raw.githubusercontent.com/betonit007/TriviaGame/master/assets/images/saab-logo.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     background-color: #E11F37;
 }
 
