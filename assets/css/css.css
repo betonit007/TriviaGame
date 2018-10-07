@@ -37,13 +37,27 @@ h1 {
 }
 
 .answer {
-    height: 8px;
-    width: 200px;
+    font-family: 'Orbitron', sans-serif;
+    height: 40px;
+    width: 300px;
     background-color: #D7A84F;
-    color: #00285C;
-    font-size: 35px;
-    margin: 0 auto;
+    color: #E11F37;
+    font-size: 30px;
+    margin: 10px auto;
     text-align: center;
+    padding-top: 5px;
+    border: 2px outset #000000;
+    cursor: pointer;
+
+}
+
+.answer:hover{
+    background-color: yellow;
+}
+
+#question {
+    text-align: center;
+    font-size: 60px;
 }
 
 .shake {

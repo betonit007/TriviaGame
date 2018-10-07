@@ -3,7 +3,23 @@ var timeleft;
 var timer;
 
 ///////////////////////////////////////
-start();
+
+////////////////////////////////////////////////////////Main Body//////////////////////////////////////////
+
+$(document).ready(function() {
+
+  start();
+
+  $(document).on("click", "div#start", function() {
+  thirtySecTimer();
+ 
+  possibleAnswers();
+
+  questions();
+
+  });
+
+  
 
 
 
@@ -13,22 +29,14 @@ start();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+});
 
 /////////////////functions////////////////////////////////////////
 
 ////Timer/////
 function thirtySecTimer() {
+    $("#start").empty();
+    $("#start").removeClass("answer");
     timeleft = 11;
     timer = setInterval(function(){
         $("#timer").text("You have: " + timeleft + " seconds remaining.");
@@ -45,10 +53,19 @@ function thirtySecTimer() {
 }
 
 function start() {
-    $("#start").text("Start");
-    //$("#start").attr("class", "answer");
+    $("#start").text("Press Start");
+    $("#start").addClass("answer");
 }
     
+function possibleAnswers() {
+    $(".aField").addClass("answer");
+}
+
+function questions() {
+    $("#question").text("What will be the first Question in Saab Trivia?");
+}
+
+
 
   
 
