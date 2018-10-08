@@ -1,8 +1,10 @@
 ////Variables//
 var timeleft;
 var timer;
-var counter = 0;
-var f = 2;
+var i = 0;
+var answerChosen;
+var correct = 0;
+var incorrect = 0;
 ///////////////////////////////////////
 
 ////////////////////////////////////////////////////////Main Body//////////////////////////////////////////
@@ -12,17 +14,27 @@ $(document).ready(function() {
   start();
 
   $(document).on("click", "div#start", function() {
-  thirtySecTimer();
+     thirtySecTimer();
  
-  possibleAnswers();
+     questionAnswer();
 
-  questions();
+    });
 
-  });
+
+  $(document).on("click", "div.aField", function() {
+     answerChosen = $(this);
+     if (answerChosen.text() === questionAnswerArray[0].correctAnswer) {
+        console.log("Correct!");
+        yourRight();
+     }
+     else {
+        console.log("Incorrect!");
+     }
+    
 
   
-
-
+    });
+  
 
 
 
@@ -34,6 +46,15 @@ $(document).ready(function() {
 
 /////////////////functions////////////////////////////////////////
 
+function yourRight() {
+    clearInterval(timer);
+    correct++;
+    $("#timer").text("Correct!");
+    $("#score").html("Right: " + correct + "   Wrong: " + incorrect);
+
+
+}
+
 ////Timer/////
 function thirtySecTimer() {
     $("#start").empty();
@@ -42,6 +63,9 @@ function thirtySecTimer() {
     timer = setInterval(function(){
         $("#timer").text("You have: " + timeleft + " seconds remaining.");
         timeleft--;
+        if (timeleft > 10) {
+            $("#timer").css("color", "#D7A84F");
+        }
         if (timeleft < 10) {
             $("#timer").css("color", "red");
         }
@@ -58,16 +82,33 @@ function start() {
     $("#start").addClass("answer");
 }
     
-function possibleAnswers() {
+function questionAnswer() {
+    $("#question").text(questionAnswerArray[i].saabQuestion);
     $(".aField").addClass("answer");
-    $("#answer" + f).text(questonAnswerArray[0].correctAnswer);
+    var f = (Math.floor(Math.random() * 3));
+    $("#answer" + f).text(questionAnswerArray[i].correctAnswer);
+    console.log($("#answer0").html);
+    if (f === 0) {
+        $("#answer1").text(questionAnswerArray[i].saabAnswers[0]);
+        $("#answer2").text(questionAnswerArray[i].saabAnswers[1]);
+    }
+    else if (f === 1) {
+        $("#answer0").text(questionAnswerArray[i].saabAnswers[0]);
+        $("#answer2").text(questionAnswerArray[i].saabAnswers[1]);
+    }
+    else {
+        $("#answer0").text(questionAnswerArray[i].saabAnswers[0]);
+        $("#answer1").text(questionAnswerArray[i].saabAnswers[1]);
+    }
+
+
+    
 }
 
-function questions() {
-    $("#question").text("What will be the first Question in Saab Trivia?");
-}
 
 ////////////creates question / answer info arrays/////////////////////////
+
+
 
 function qAndA(saabQuestion, correctAnswer) {
    this.saabQuestion = saabQuestion;
@@ -77,11 +118,11 @@ function qAndA(saabQuestion, correctAnswer) {
 
 }
 
-var questionAnswer1 = new qAndA("What is the fastest Saab Protection car, 0-60 mph?", "1999 9-3 Viggen");
+var questionAnswer1 = new qAndA("What is the fastest Saab production car, 0-60 mph?", "1999 9-3 Viggen");
 questionAnswer1.saabAnswers[0] = "2008 9-3 Turbo X SportCombi";
 questionAnswer1.saabAnswers[1] = "2006 9-3 Aero V6";
 
-var questonAnswerArray = [questionAnswer1];
+var questionAnswerArray = [questionAnswer1];
 
 
 
