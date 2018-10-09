@@ -25,10 +25,12 @@ $(document).ready(function() {
      answerChosen = $(this);
      if (answerChosen.text() === questionAnswerArray[0].correctAnswer) {
         console.log("Correct!");
+        emptyFields();
         yourRight();
+        
      }
      else {
-        console.log("Incorrect!");
+        yourWrong();
      }
     
 
@@ -46,13 +48,39 @@ $(document).ready(function() {
 
 /////////////////functions////////////////////////////////////////
 
+function emptyFields () {
+    $(".aField, #timer, #question, #start").empty();
+    $(".aField").removeClass("answer");
+
+}
+
 function yourRight() {
     clearInterval(timer);
     correct++;
-    $("#timer").text("Correct!");
     $("#score").html("Right: " + correct + "   Wrong: " + incorrect);
+    $("#timer").html("<img src='assets/images/right.png' width='800px'></img>");
+    $("#score").css({"margin-top": "270px"});
+    setTimeout("emptyFields()", 4000);
+    setTimeout("questionAnswer()", 4000);
+    setTimeout(function() { $("#score").css({"margin-top": "0px"}); }, 4000);
+    setTimeout("clearInterval(timer)", 4000);
+    setTimeout("timeleft = 30", 4000);
+    setTimeout("thirtySecTimer();", 4000);
+}
 
-
+function yourWrong() {
+    clearInterval(timer);
+    incorrect++;
+    $("#score").html("Right: " + correct + "   Wrong: " + incorrect);
+    $("#timer").html("<img src='assets/images/Delete.png' width='800px'></img>");
+    $("#score").css({"margin-top": "100px"});
+    setTimeout("emptyFields()", 4000);
+    setTimeout("questionAnswer()", 4000);
+    setTimeout(function() { $("#score").css({"margin-top": "0px"}); }, 4000);
+    setTimeout("clearInterval(timer)", 4000);
+    setTimeout("timeleft = 30", 4000);
+    setTimeout("thirtySecTimer();", 4000);
+    
 }
 
 ////Timer/////
@@ -118,7 +146,7 @@ function qAndA(saabQuestion, correctAnswer) {
 
 }
 
-var questionAnswer1 = new qAndA("What is the fastest Saab production car, 0-60 mph?", "1999 9-3 Viggen");
+var questionAnswer1 = new qAndA("What is the fastest Saab production vehicle, 0-60 mph?", "1999 9-3 Viggen");
 questionAnswer1.saabAnswers[0] = "2008 9-3 Turbo X SportCombi";
 questionAnswer1.saabAnswers[1] = "2006 9-3 Aero V6";
 
