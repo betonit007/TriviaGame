@@ -12,10 +12,10 @@ h1 {
 }
 
 #container {
-    height: 900px;
+    height: 800px;
     width: 800px;
     background-image: url("https://raw.githubusercontent.com/betonit007/TriviaGame/master/assets/images/saab-logo.png");
-    margin: auto;
+    margin: 0 auto;
     -webkit-text-stroke: 1px black;
    text-shadow: 
        3px 3px 0 black,

@@ -5,7 +5,6 @@ var i = 0;
 var answerChosen;
 var correct = 0;
 var incorrect = 0;
-var endCount = 0;
 ////Sounds/////////
 var rightSound =  new Audio("assets/sounds/right.mp3");
 var wrongSound = new Audio("assets/sounds/wrong.mp3");
@@ -14,9 +13,8 @@ var wrongSound = new Audio("assets/sounds/wrong.mp3");
 
 $(document).ready(function() {
 
-  if (endCount === 0) {
+  
       start();
-  }
 
   $(document).on("click", "div#start", function() {
      thirtySecTimer();
@@ -169,10 +167,9 @@ function endGame() {
 
 
     setTimeout("$('#score').empty()", 9500);
-    setTimeout("start()", 10000);
     setTimeout(function() {i = 0; correct = 0; incorrect = 0;}, 10000);
     setTimeout(function() { $("#timer").empty(); }, 10000); 
-    endCount++;
+    setTimeout("start()", 10250);
 }
 
 
