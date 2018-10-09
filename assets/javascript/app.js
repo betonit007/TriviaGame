@@ -33,7 +33,7 @@ $(document).ready(function() {
         yourRight();
         i++;
         if (i === 10) {
-           setTimeout("endGame()", 5000);
+           setTimeout("endGame()", 5010);
 
         }
         
@@ -43,7 +43,7 @@ $(document).ready(function() {
         yourWrong();
         i++;
         if (i === 10) {
-            setTimeout("endGame()", 5000);
+            setTimeout("endGame()", 5010);
         }
      }
     
