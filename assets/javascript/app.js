@@ -6,7 +6,9 @@ var answerChosen;
 var correct = 0;
 var incorrect = 0;
 var endCount = 0;
-///////////////////////////////////////
+////Sounds/////////
+var rightSound =  new Audio("assets/sounds/right.mp3");
+var wrongSound = new Audio("assets/sounds/wrong.mp3");
 
 ////////////////////////////////////////////////////////Main Body//////////////////////////////////////////
 
@@ -72,6 +74,7 @@ function yourRight() {
     $("#score").html("Right: " + correct + "   Wrong: " + incorrect);
     $("#timer").html("<img src='assets/images/right.png' width='800px'></img>");
     $("#score").css({"margin-top": "270px"});
+    rightSound.play();
     setTimeout("emptyFields()", 4000);
     setTimeout("questionAnswer()", 4000);
     setTimeout(function() { $("#score").css({"margin-top": "0px"}); }, 4000);
@@ -83,8 +86,8 @@ function yourWrong() {
     clearInterval(timer);
     incorrect++;
     $("#score").html("Right: " + correct + "   Wrong: " + incorrect);
-    $("#timer").html("<img src='assets/images/Delete.png' width='800px'></img>");
-    $("#score").css({"margin-top": "100px"});
+    $("#timer").html("<img src='assets/images/Delete.png' width='800px' height='500px'></img>");
+    wrongSound.play();
     setTimeout("emptyFields()", 4000);
     setTimeout("questionAnswer()", 4000);
     setTimeout(function() { $("#score").css({"margin-top": "0px"}); }, 4000);
@@ -152,9 +155,23 @@ function questionAnswer() {
 function endGame() {
     clearInterval(timer);
     emptyFields();
+    if (correct > 7) {
+        $("#timer").html("<img src='assets/images/right.png' width='800px'></img>");
+        $("#score").css({"margin-top": "270px"});
+        $("h1").text("Great Job!");
+        setTimeout(function() { $("h1").text("Saab Trivia") }, 10000);
+    }
+    else {
+        $("#timer").html("<img src='assets/images/Delete.png' width='800px' height='500px'></img>");
+        $("h1").text("Better Luck Next Time!");
+        setTimeout(function() { $("h1").text("Saab Trivia") }, 10000);
+    }
+
+
     setTimeout("$('#score').empty()", 9500);
     setTimeout("start()", 10000);
     setTimeout(function() {i = 0; correct = 0; incorrect = 0;}, 10000);
+    setTimeout(function() { $("#timer").empty(); }, 10000); 
     endCount++;
 }
 
