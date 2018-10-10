@@ -4,7 +4,24 @@ body {
     color: #D7A84F;
 }
 
-h1 {
+#gif {
+   position: relative;
+   left: 237px;
+   top: -120px;
+   height: 1px;
+   width: 1px;
+}
+
+#endGif {
+    position: relative;
+    left: 237px;
+    top: 120px;
+    height: 1px;
+    width: 1px;
+ }
+
+
+h1 { 
     font-size: 70px;
     padding-top: 20px;
     margin: 0 auto;
